@@ -1,16 +1,26 @@
 function solution(k, tangerine) {
-    const obj = {};
+    var answer = 0;
+    const 중복제거한귤들 = [...new Set(tangerine)];
+    const 귤크기갯수들 = [];
     
-    // 같은 종이 몇개가 있는지 확인한다.
-    tangerine.forEach((n) => {
-        // obj[n] 값이 있으면 1을 더한 값을
-        // obj[n] 값이 없으면 1을 넣어준다.
-        obj[n] = obj[n] ? ++obj[n] : 1;
-    });
-    const counts = Object.values(obj).sort((a, b) => b - a);
+    중복제거한귤들.forEach((item) => {
+        let 갯수 = 0;
+        tangerine.forEach((귤크기) => {
+            item === 귤크기 && 갯수++;
+        })
+        귤크기갯수들.push({귤크기: item, 갯수: 갯수});
+    })
     
-    for(let i=0; i<counts.length; i++) {
-        k = k - counts[i];
-        if(k <= 0) return i + 1;
+    귤크기갯수들.sort((a, b) => b.갯수 - a.갯수);
+    // console.log(귤크기갯수들);
+    
+    for(let i=0; i<귤크기갯수들.length-1; i++) {
+        if(k <= 0) {
+            return i;
+        };
+        k = k - 귤크기갯수들[i].갯수;
+        
     }
+    
+    return answer;
 }
