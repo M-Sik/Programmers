@@ -1,5 +1,4 @@
 function solution(num_list, n) {
-    const arr1 = num_list.splice(n);
-    num_list.unshift(...arr1);
+    num_list.unshift(...num_list.splice(n));
     return num_list;
 }
