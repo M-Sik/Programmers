@@ -1,9 +1,9 @@
 function solution(names) {
     const answer = [];
     
-    names.forEach((v, i) => {
-        i % 5 === 0 && answer.push(v)
-    })
+    for(let i=0; i<names.length; i+=5){
+        i % 5 === 0 && answer.push(names[i]);
+    }
     
     return answer;
 }
