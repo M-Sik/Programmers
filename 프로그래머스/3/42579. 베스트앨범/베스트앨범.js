@@ -11,7 +11,7 @@ function solution(genres, plays) {
     // 노래별 장르, 재생횟수, 인덱스 배열 생성
     const allInfo = genres.map((genre, i) => ({genre, "plays": plays[i], "index": i}));
     // 노래 장르별 반복
-    for(let [k, _] of sortedMap) {
+    for(let [k] of sortedMap) {
         // 장르에 맞는 노래 정보를 담을 배열 생성
         const arr = [];
         // 노래별 반복을 하며 장르가 같을경우 배열에 추가
