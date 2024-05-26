@@ -1,14 +1,13 @@
 function solution(clothes) {
     const map = new Map();
-    let count = 1;
-
-    for(let [c,t] of clothes){
-        if(map.has(t)) map.set(t, map.get(t)+1);
-        else map.set(t, 1);
-    }
+    let answer = 1;
     
-
-    for(let x of map.values()) count*=(x+1);
-    return count-1;
-
+    clothes.forEach(([item, category]) => {
+        map.has(category) ? map.set(category, map.get(category) + 1) : map.set(category, 1);
+    })
+    console.log(map);
+    for(let [_, v] of map) {
+        answer *= (v+1);
+    }
+    return answer -1;
 }
