@@ -1,7 +1,8 @@
 function solution(k, dungeons) {
   let answer = 0;
   // 방문했는지 확인하기 위한 배열
-  const visited = Array.from({ length: dungeons.length }, () => false);
+  const visited = new Array(dungeons.length).fill(false);
+    
 
   // 완전탐색을 위한 DFS(남은 피로도, 진행단계)
   function DFS(hp, L) {
