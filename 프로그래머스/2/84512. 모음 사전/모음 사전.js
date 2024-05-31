@@ -1,17 +1,16 @@
 function solution(word) {
-    const result = [];
-    const str = '';
+    const dic = [];
+    const words = [...'AEIOU'];
+    const dfs = (cur, length) => {
+        if(length > 5) return;
+        dic.push(cur);
+        
+        for(let i=0; i<words.length; i++) {
+            dfs(cur + words[i], length + 1);
+        }
+    }
     
-    for(let i=1; i<=5; i++) dps(str, i, result);
+    dfs("", 0);
     
-    return result.sort().indexOf(word) + 1;
-}
-
-function dps(word, length, result) {
-    const words = [..."AEIOU"];
-    
-    if(word.length === length) return result.push(word);
-    words.forEach((item) => {
-        dps(word + item, length, result);
-    })
+    return dic.indexOf(word);
 }
