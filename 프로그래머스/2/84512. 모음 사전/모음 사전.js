@@ -1,16 +1,15 @@
 function solution(word) {
-    const dic = [];
+    const answer = [];
     const words = [...'AEIOU'];
     const dfs = (cur, length) => {
         if(length > 5) return;
-        dic.push(cur);
-        
-        for(let i=0; i<words.length; i++) {
+        for(let i=0; i<5; i++) {
             dfs(cur + words[i], length + 1);
         }
+        answer.push(cur);
     }
-    
+
     dfs("", 0);
     
-    return dic.indexOf(word);
+    return answer.sort().indexOf(word);
 }
